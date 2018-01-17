@@ -18,4 +18,4 @@ class Observation(models.Model):
     temperature = models.IntegerField()
     time_stamp = models.DateTimeField(auto_now_add=True)
     survey_point = models.ForeignKey(SurveyPoint,
-                                     on_delte=models.CASCADE)
+                                     on_delete=models.CASCADE)
