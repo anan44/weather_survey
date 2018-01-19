@@ -11,6 +11,9 @@ class SurveyPoint(models.Model):
     x_Coordinate = models.FloatField()
     y_Coordinate = models.FloatField()
 
+    def __str__(self):
+        return self.name
+
 
 class Observation(models.Model):
     """Individual weather Observation on a single SurveyPoint
@@ -19,3 +22,6 @@ class Observation(models.Model):
     time_stamp = models.DateTimeField(auto_now_add=True)
     survey_point = models.ForeignKey(SurveyPoint,
                                      on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.temperature

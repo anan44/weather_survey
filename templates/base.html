@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Weather Survey</title>
+    <title>WeatherSurvey</title>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -12,11 +12,11 @@
   <body>
     <nav class="navbar mynav" role="navigation" id="navbar">
       <div class="container">
-        <a class="navbar-brand mynav" href="#">Weather Survey</a>
+        <a class="navbar-brand mynav" href="{% url 'index' %}">WeatherSurvey</a>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Post</a></li>
-          <li><a href="#">Groups</a></li>
-          <li><a href="#">Create Group</a></li>
+          <li><a href="{% url 'survey:create' %}">Make Observation</a></li>
+          <li><a href="#">Past 24h</a></li>
+          <li><a href="#">All Data</a></li>
         </ul>
       </div>
     </nav>
