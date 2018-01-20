@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -8,6 +9,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/master.css' %}"/>
   </head>
   <body>
     <nav class="navbar mynav" role="navigation" id="navbar">
@@ -16,7 +19,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'survey:create' %}">Make Observation</a></li>
           <li><a href="#">Past 24h</a></li>
-          <li><a href="#">All Data</a></li>
+          <li><a href="{% url 'survey:list' %}">All Data</a></li>
         </ul>
       </div>
     </nav>

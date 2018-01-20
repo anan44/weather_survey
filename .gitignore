@@ -1,6 +1,8 @@
 # DB stuff
 *.sqlite3
 
+# swp files
+*.swp
 # # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

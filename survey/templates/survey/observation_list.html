@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <h1>Details of all the observations made ever</h1>
+  </div>
+  <div class="col-md-8">
+    <table class="all">
+      <tr>
+        <th>Place</th>
+        <th>Time</th>
+        <th>Celcius</th>
+      </tr>
+      {% for obs in object_list %}
+        <tr>
+          <td>{{ obs.survey_point }}</td>
+          <td>{{ obs.time_stamp }}</td>
+          <td>{{ obs.temperature }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -12,3 +12,9 @@ class CreateObservation(SelectRelatedMixin, generic.CreateView):
     fields = ("temperature", "survey_point")
     model = models.Observation
     success_url = reverse_lazy("thanks")
+
+
+class ListObservatsions(generic.ListView):
+    """View for presenting all the data gathered ever
+    """
+    model = models.Observation
