@@ -6,4 +6,5 @@ app_name = "survey"
 urlpatterns = [
     path("new/", views.CreateObservation.as_view(), name="create"),
     path("all_data/", views.ListObservatsions.as_view(), name="list"),
+    path("latest_stats/", views.LatestStats.as_view(), name="stats"),
 ]
