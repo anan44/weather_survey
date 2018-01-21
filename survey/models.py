@@ -24,4 +24,4 @@ class Observation(models.Model):
                                      on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.temperature
+        return "{}: {}".format(self.survey_point, str(self.temperature))
