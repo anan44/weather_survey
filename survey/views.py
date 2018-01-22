@@ -41,9 +41,10 @@ class LatestStats(generic.TemplateView):
             """
             obs = Observation.objects
             obs = obs.filter(survey_point__name=city_name)
-            return obs.first().temperature
-
-
+            if obs.count() > 0:
+                return obs.first().temperature
+            else:
+                return "n/a"
 
         # create the context item
         context = super(LatestStats, self).get_context_data(**kwargs)
@@ -64,13 +65,20 @@ class LatestStats(generic.TemplateView):
             city_data = obs.filter(survey_point__name=pn)
             data = {}
             data["name"] = pn
-            data["min"] = city_data.aggregate(Min("temperature"))
-            data["min"] = data["min"]["temperature__min"]
-            data["max"] = city_data.aggregate(Max("temperature"))
-            data["max"] = data["max"]["temperature__max"]
             data["latest"] = last_obs(pn)
+            if city_data.count() > 0:
+                data["min"] = city_data.aggregate(Min("temperature"))
+                data["min"] = data["min"]["temperature__min"]
+                data["max"] = city_data.aggregate(Max("temperature"))
+                data["max"] = data["max"]["temperature__max"]
+                data["avg"] = city_data.aggregate(Avg("temperature"))
+                data["avg"] = data["avg"]["temperature__avg"]
+            else:
+                data["min"] = "n/a"
+                data["max"] = "n/a"
+                data["avg"] = "n/a"
+
             all_cities.append(data)
 
         context["data"] = all_cities
-        print(context)
         return context
