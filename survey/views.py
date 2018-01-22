@@ -49,10 +49,7 @@ class LatestStats(generic.TemplateView):
         # create the context item
         context = super(LatestStats, self).get_context_data(**kwargs)
         # get list of SurveyPoint names
-        point_names = []
-        survey_points = SurveyPoint.objects.all()
-        for sp in survey_points:
-            point_names.append(sp.name)
+        point_names = [point.name for point in SurveyPoint.objects.all()]
 
         # get all the Observations in past 24h
         time_from = timezone.now() - timedelta(days=1)
