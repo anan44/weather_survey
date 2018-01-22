@@ -5,12 +5,16 @@ table {
     width: 100%;
 }
 
+th {
+    background-color: #74AFAD
+}
+
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #DDDDDD;
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(even) {
-    background-color: #a2d6bf;
+    background-color: #ECECEA;
 }
