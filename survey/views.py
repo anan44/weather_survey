@@ -39,9 +39,8 @@ class LatestStats(generic.TemplateView):
             """helper function for getting latest observation
             regardless of the time stamp
             """
-            obs = Observation.objects
-            obs = obs.filter(survey_point__name=city_name)
-            if obs.count() > 0:
+            obs = Observation.objects.filter(survey_point__name=city_name)
+            if obs:
                 return obs.first().temperature
             else:
                 return "n/a"
