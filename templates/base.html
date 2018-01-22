@@ -18,7 +18,7 @@
         <a class="navbar-brand mynav" href="{% url 'index' %}">WeatherSurvey</a>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'survey:create' %}">Make Observation</a></li>
-          <li><a href="#">Past 24h</a></li>
+          <li><a href="{% url 'survey:stats' %}">Past 24h</a></li>
           <li><a href="{% url 'survey:list' %}">All Data</a></li>
         </ul>
       </div>

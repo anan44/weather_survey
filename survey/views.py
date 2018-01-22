@@ -6,7 +6,7 @@ from django.views import generic
 from braces.views import SelectRelatedMixin
 from django.shortcuts import render
 
-from .models import Observation
+from .models import Observation, SurveyPoint
 # Create your views here.
 
 
@@ -30,13 +30,47 @@ class LatestStats(generic.TemplateView):
     """
     model = Observation
     template_name = "survey/latest_stats.html"
-    context_object_name = "data"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, *args, **kwargs):
+        """creates the context data for the view
+        """
+
+        def last_obs(city_name):
+            """helper function for getting latest observation
+            regardless of the time stamp
+            """
+            obs = Observation.objects
+            obs = obs.filter(survey_point__name=city_name)
+            return obs.first().temperature
+
+
+
+        # create the context item
         context = super(LatestStats, self).get_context_data(**kwargs)
+        # get list of SurveyPoint names
+        point_names = []
+        survey_points = SurveyPoint.objects.all()
+        for sp in survey_points:
+            point_names.append(sp.name)
+
+        # get all the Observations in past 24h
         time_from = timezone.now() - timedelta(days=1)
-        past_24h = Observation.objects.filter(time_stamp__gte=time_from)
-        context["avg_temp"] = past_24h.aggregate(Avg("temperature"))["temperature__avg"]
-        context["max_temp"] = past_24h.aggregate(Max("temperature"))["temperature__max"]
-        context["min_temp"] = past_24h.aggregate(Min("temperature"))["temperature__min"]
+        obs = Observation.objects
+        obs = obs.filter(time_stamp__gte=time_from)
+
+        # make a dict of all cities and their data
+        all_cities = []
+        for pn in point_names:
+            city_data = obs.filter(survey_point__name=pn)
+            data = {}
+            data["name"] = pn
+            data["min"] = city_data.aggregate(Min("temperature"))
+            data["min"] = data["min"]["temperature__min"]
+            data["max"] = city_data.aggregate(Max("temperature"))
+            data["max"] = data["max"]["temperature__max"]
+            data["latest"] = last_obs(pn)
+            all_cities.append(data)
+
+        context["data"] = all_cities
+        print(context)
         return context
