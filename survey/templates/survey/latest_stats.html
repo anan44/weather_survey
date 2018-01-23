@@ -5,17 +5,15 @@
 
   <table>
     <th>City</th>
-    <th>Last Observation</th>
-    <th>24h Average Celcius</th>
+    <th>24h Average Celsius</th>
     <th>24h Highest Celsius</th>
     <th>24h Lowest Celsius</th>
     {% for city in data %}
       <tr>
-        <td>{{ city.name }}</td>
-        <td>{{ city.latest }}</td>
-        <td>{{ city.avg }}</td>
-        <td>{{ city.max }}</td>
-        <td>{{ city.min }}</td>
+        <td>{{ city.survey_point__name }}</td>
+        <td>{{ city.temperature__avg|floatformat:"0" }}</td>
+        <td>{{ city.temperature__min }}</td>
+        <td>{{ city.temperature__max }}</td>
       </tr>
     {% endfor %}
   </table>
