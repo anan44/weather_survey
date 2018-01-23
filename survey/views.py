@@ -34,9 +34,7 @@ class LatestStats(generic.TemplateView):
     def get_context_data(self, *args, **kwargs):
         """creates the context data for the view
         """
-        # create the context item
         context = super(LatestStats, self).get_context_data(**kwargs)
-        # get list of SurveyPoint names
         time_from = timezone.now() - timedelta(days=1)
 
         data = Observation.objects.filter(time_stamp__gte=time_from) \
