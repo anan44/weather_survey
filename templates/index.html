@@ -15,11 +15,12 @@
   <div class="col-md-6">
     <table>
       <th>City</th>
-      <th>Celsius (Last Observation)</th>
+      <th>Celsius (Last Observation)
+      </th>
       {% for city in data %}
         <tr>
-          <td>{{ city.survey_point }}</td>
-          <td>{{ city.temperature }}</td>
+          <td>{{ city.1 }}</td>
+          <td>{{ city.2 }}</td>
         </tr>
       {% endfor %}
     </table>

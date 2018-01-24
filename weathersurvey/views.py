@@ -1,5 +1,6 @@
-from survey.models import Observation, SurveyPoint
+from survey.models import Observation
 from django.views.generic import TemplateView
+from django.db import connection
 # Create your views here.
 
 
@@ -12,21 +13,21 @@ class HomePage(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(HomePage, self).get_context_data(**kwargs)
-        cities = [city.name for city in SurveyPoint.objects.all()]
+        query = """
+        SELECT survey_observation.id, survey_surveypoint.name, temperature
+        FROM survey_observation
+        JOIN survey_surveypoint
+        ON survey_observation.survey_point_id = survey_surveypoint.id
+        WHERE survey_observation.id IN (
+        SELECT MAX(id)
+        FROM survey_observation
+        GROUP BY survey_point_id)
+        ORDER BY survey_observation.id DESC
+        """
 
-        def last_obs(city):
-            obs = Observation.objects.filter(survey_point__name=city)
-            if obs:
-                return obs.last()
-            else:
-                return {"survey_point": city,
-                        "temperature": "No data. Please help us by \
-                        contributing"}
+        data = connection.cursor().execute(query)
 
-        data = [last_obs(city) for city in cities]
         context["data"] = data
-
-        print(data)
         return context
 
 
