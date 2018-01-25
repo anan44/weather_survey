@@ -9,8 +9,8 @@ class SurveyPoint(models.Model):
     """
     name = models.CharField(max_length=255,
                             unique=True)
-    x_Coordinate = models.FloatField()
-    y_Coordinate = models.FloatField()
+    x_coordinate = models.FloatField()
+    y_coordinate = models.FloatField()
 
     def __str__(self):
         return self.name
