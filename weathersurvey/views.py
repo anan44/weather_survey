@@ -25,7 +25,7 @@ class HomePage(TemplateView):
         ORDER BY survey_observation.id DESC
         """
 
-        cursor = connection.cursor().execute(query).fetchall()
+        cursor = connection.cursor()
         cursor.execute(query)
 
         data = cursor.fetchall()
