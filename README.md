@@ -10,8 +10,8 @@ Make everything pretty
 
 1) Create new .env file on root folder
     * File needs to contain following:
-    SECRET_KEY="your-secret-key-goes-here"
-    DEBUG=True
+    * SECRET_KEY="your-secret-key-goes-here"
+    * DEBUG=True
 2) Add desired URL (only domain!) to ALLOWED_HOSTS in settings.py
 3) Heroku apps:create [desiredn app name]
 4) Heroku config:push
@@ -29,3 +29,18 @@ sharing SECRET_KEY can compromise  website security
     * heroku run python manage.py migrate
 8) Check everything is running correctly and turn of DEBUG mode
     * heroku config:set DEBUG=False
+
+## Running locally
+1) It is recommended to use virtual environment
+	* Your python and package versions might vary from ones used on this project
+
+2) Create new .env file on root folder
+    * File needs to contain following:
+    * SECRET_KEY="your-secret-key-goes-here"
+    * DEBUG=True
+3) Run database migrations
+	* python manage.py migrate
+	* python manage.py makemigrations
+	* python manage.py migrate
+4) Run server
+	* python manage.py runserver
