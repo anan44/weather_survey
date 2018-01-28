@@ -34,6 +34,7 @@ sharing SECRET_KEY can compromise  website security
 1) It is recommended to use virtual environment
 	* Your python and package versions might vary from ones used on this project
 2) Install required packages per requirements.txt
+    * pip install -r requirements-dev.txt
 3) Create new .env file on root folder
     * File needs to contain following:
     * SECRET_KEY="your-secret-key-goes-here"
