@@ -44,3 +44,33 @@ sharing SECRET_KEY can compromise  website security
 	* python manage.py migrate
 5) Run server
 	* python manage.py runserver
+
+## Requirements
+* Requirements are specifiied in following files:
+    * runtime.txt
+    * requirements-dev.txt
+    * requirements.txt
+* Running project with other configurations might be possible, but not
+  recommended due to possible compatibility issues.
+
+#### Summary of required versions and packages
+##### Development and Production
+* Python 3.6.4
+* beautifulsoup4==4.6.0
+* dj-database-url==0.4.2
+* dj-static==0.0.6
+* Django==2.0.1
+* django-bootstrap3==9.1.0
+* django-braces==1.12.0
+* django-webtest==1.9.2
+* python-decouple==3.1
+* pytz==2017.3
+* six==1.11.0
+* static3==0.7.0
+* waitress==1.1.0
+* WebOb==1.7.4
+* WebTest==2.0.29
+
+##### Production only
+* gunicorn
+* psycopg2
