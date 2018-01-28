@@ -33,14 +33,14 @@ sharing SECRET_KEY can compromise  website security
 ## Running locally
 1) It is recommended to use virtual environment
 	* Your python and package versions might vary from ones used on this project
-
-2) Create new .env file on root folder
+2) Install required packages per requirements.txt
+3) Create new .env file on root folder
     * File needs to contain following:
     * SECRET_KEY="your-secret-key-goes-here"
     * DEBUG=True
-3) Run database migrations
+4) Run database migrations
 	* python manage.py migrate
 	* python manage.py makemigrations
 	* python manage.py migrate
-4) Run server
+5) Run server
 	* python manage.py runserver
