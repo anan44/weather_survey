@@ -12,8 +12,8 @@
       <tr>
         <td>{{ city.survey_point__name }}</td>
         <td>{{ city.temperature__avg|floatformat:"0" }}</td>
-        <td>{{ city.temperature__min }}</td>
         <td>{{ city.temperature__max }}</td>
+        <td>{{ city.temperature__min }}</td>
       </tr>
     {% endfor %}
   </table>
