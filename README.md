@@ -3,7 +3,10 @@
 ### Deployed at https://weather-reaktor.herokuapp.com/
 
 ## TODO:
-Make everything pretty
+* Make everything pretty
+* Plug in with some weather API
+* Add proper statistic analysis
+* Add data visualization
 
 
 ## Deployment guide (for Heroku):
